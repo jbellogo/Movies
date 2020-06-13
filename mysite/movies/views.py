@@ -1,17 +1,15 @@
 from django.shortcuts import render
 
-#temporary module
-from django.http import HttpResponse
-# Create your views here.
-
-# here goes everything you want to display, except html
+# here goes everything you want to display, url functions pointing to html
 # each page is a function
 
 def home(request):
-    # Instead of this, render
-    #return HttpResponse("Hi Im Juan")
     return render(request, "home.html")
+    # points to html base
 
 def about(request):
     return render(request, 'about.html')
-    return HttpResponse("additional page, might delete")
+    # additional page, might delete
+
+def new_search(rquest):
+    return render(request, 'new_search.html')

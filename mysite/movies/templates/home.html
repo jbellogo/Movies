@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -26,8 +27,52 @@
     </div>
     <!--full page image not working rn-->
 
-    <h1>Hey What's up!</h1>
-    <p>with bootstrap now yay</p>
+    <div class=container style="padding-top:50px">
+      <h1 style="text-align:center">Movie Engine</h1>
+      <p style="text-align:center">A movie engine motivated by how hard it
+      can be to pick the perfect movie for the perfect time.</p>
+        <div class="row" style="padding-top:50px">
+          <!--Card 1-->
+          <div class="col s4">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+              <div class="card-header">Similar</div>
+              <div class="card-body text-info">
+                <p class="card-text">Know what you like? Search similar titles!</p>
+              </div>
+            </div>
+          </div>
+          <!--Card 2-->
+          <div class="col s4">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+              <div class="card-header">Recommended</div>
+              <div class="card-body text-info">
+                <p class="card-text">See our recommendations based on search criteria</p>
+              </div>
+            </div>
+          </div>
+          <!--Card 3-->
+          <div class="col s4">
+            <div class="card border-info mb-3" style="max-width: 18rem;">
+              <div class="card-header">Mood</div>
+              <div class="card-body text-info">
+                <p class="card-text">Get recommendations based on current feelings!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% block content %}
+          <!--Takes you to the url new_search-->
+      <form action="{% url 'new_search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="search">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+            </button>
+      </form>
+      {% endblock content %}
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
