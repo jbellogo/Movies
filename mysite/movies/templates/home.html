@@ -9,17 +9,28 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>home</title>
+    <!--materialize framework-->
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>The Movie Engine</title>
   </head>
 
   <body>
-    <!--navbar-->
+    <!--navbar
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand">Home</a>  <!--The title-->
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Movies</button>
-      </form>
+      <a class="navbar-brand">Home</a>
+    </nav>
+  -->
+    <nav style="background-color:#17a589">
+      <div class="container nav-wrapper">
+        <a href="/" class="brand-logo">MovieEngine</a>
+        <ul id="nav-mobile" class="right">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!--images-->
@@ -64,14 +75,19 @@
 
       {% block content %}
           <!--Takes you to the url new_search-->
-      <form action="{% url 'new_search' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="search" placeholder="search">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <!--action attribute specifies where to send form inout-->
+    <div class="container">
+        <form action={% url 'new_search' %} method="POST">
+          {% csrf_token %}
+          <input type="text" name="search" placeholder="search">
+          <button class="btn waves-effect waves-light" type="submit" name="action">
+            Submit
             <i class="material-icons right">send</i>
-            </button>
-      </form>
-      {% endblock content %}
+          </button>
+        </form>
+    </div>
+    {% endblock content %}
+
 
 
     <!-- Optional JavaScript -->

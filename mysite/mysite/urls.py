@@ -21,5 +21,7 @@ from movies import views # used to be from . import views, then apps introduced
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('about', views.about, name='about')
+    path('about', views.about, name='about'),
+    path('new_search', views.new_search, name='new_search'),
+    # each page must be here
 ]

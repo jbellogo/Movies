@@ -11,5 +11,7 @@ def about(request):
     return render(request, 'about.html')
     # additional page, might delete
 
-def new_search(rquest):
-    return render(request, 'new_search.html')
+def new_search(request):
+    search = request.POST.get('search')
+    print(search)
+    return render(request, 'templates/new_search.html')
