@@ -13,5 +13,10 @@ def about(request):
 
 def new_search(request):
     search = request.POST.get('search')
+    # prints on the terminal running the site
     print(search)
-    return render(request, 'templates/new_search.html')
+
+    things_for_frontend = {
+        'search': search,
+    }
+    return render(request, 'new_search.html', things_for_frontend)

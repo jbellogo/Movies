@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "style.css" %}">
 
     <!--materialize framework-->
-    <link rel="stylesheet" href="{% static "style.css" %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -18,11 +18,7 @@
   </head>
 
   <body>
-    <!--navbar
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand">Home</a>
-    </nav>
-  -->
+    <!--navbar-->
     <nav style="background-color:#17a589">
       <div class="container nav-wrapper">
         <a href="/" class="brand-logo">MovieEngine</a>
@@ -33,16 +29,20 @@
       </div>
     </nav>
 
-    <!--images-->
-    <div class="view" style="background-image:url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    </div>
-    <!--full page image not working rn-->
+    <!--Collage
+      not working rn-->
 
     <div class=container style="padding-top:50px">
+      <!--short description-->
+      <div class="container">
+
       <h1 style="text-align:center">Movie Engine</h1>
       <p style="text-align:center">A movie engine motivated by how hard it
       can be to pick the perfect movie for the perfect time.</p>
-        <div class="row" style="padding-top:50px">
+
+    </div>
+
+        <div class="row wall" style="padding-top:50px">
           <!--Card 1-->
           <div class="col s4">
             <div class="card border-info mb-3" style="max-width: 18rem;">
@@ -73,9 +73,9 @@
         </div>
       </div>
 
-      {% block content %}
-          <!--Takes you to the url new_search-->
-      <!--action attribute specifies where to send form inout-->
+
+    <!--Search bar-->
+    <!--Action attribute specifies where to send (new_search view)-->
     <div class="container">
         <form action={% url 'new_search' %} method="POST">
           {% csrf_token %}
@@ -86,8 +86,11 @@
           </button>
         </form>
     </div>
-    {% endblock content %}
 
+    {% block content %}
+
+
+    {% endblock content %}
 
 
     <!-- Optional JavaScript -->
