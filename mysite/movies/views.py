@@ -31,13 +31,20 @@ def filtered_search(request):
     month = request.POST.get('month')
     day = request.POST.get('day')
 
-    ##### Can use for labeling on the HTML keep the fields
-
+    if rank_by is None:
+        rank_by = "popularity"
+    if genre is None:
+        genre = "off"
+    if year is None:
+        rank_by = date.today().year
 
     # how to deal with default hmmm
+
     query = api_mining.get_query(rate_by=rank_by, genre=genre, year=year)
     url = api_mining.get_url(query)
     list_for_frontend = api_mining.url_to_ls(url)
+
+
     # need to send a dict, cant be list
     things_for_pandas = {
         'rank_by': rank_by,
