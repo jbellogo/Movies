@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datetime import date
+from . import api_mining
 
 
 # here goes the logic, url functions pointing to html
@@ -29,13 +30,25 @@ def filtered_search(request):
     year = request.POST.get('year')
     month = request.POST.get('month')
     day = request.POST.get('day')
+
+    ##### Can use for labeling on the HTML keep the fields
+
+
+    # how to deal with default hmmm
+    query = api_mining.get_query(rate_by=rank_by, genre=genre, year=year)
+    url = api_mining.get_url(query)
+    list_for_frontend = api_mining.url_to_ls(url)
+    # need to send a dict, cant be list
     things_for_pandas = {
         'rank_by': rank_by,
         'genre' : genre,
         'year' : year,
         'month' : month,
         'day' : day,
+        'list' : list_for_frontend
     }
-    print(things_for_frontend)
-    list_for_frontend = []
-    return render(request, 'filtered_search.html', list_for_frontend)
+    print(things_for_pandas)
+
+
+
+    return render(request, 'filtered_search.html', things_for_pandas)
