@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from datetime import date
 
-# here goes everything you want to display, url functions pointing to html
+
+# here goes the logic, url functions pointing to html
 # each page is a function
 
 def home(request):
@@ -20,3 +22,6 @@ def new_search(request):
         'search': search,
     }
     return render(request, 'new_search.html', things_for_frontend)
+
+def filtered_search(request):
+    return render(request, 'filtered_search.html')

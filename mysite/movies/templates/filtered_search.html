@@ -1,10 +1,13 @@
 {% extends 'home.html' %}
 
+{% block searches %}
+<!--So that's what blocks are for...
+ make content optional on pages-->
+{% endblock searches %}
 
 {% block content %}
     <!--title method capitalizes first letter, piped-->
     <h2 style="text-align: center">{{ search | title }}</h2>
-
 
     <div class="row">
         {% for post in final_postings %}

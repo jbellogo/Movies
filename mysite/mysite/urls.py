@@ -23,6 +23,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about', views.about, name='about'),
     path('new_search', views.new_search, name='new_search'),
+    path('filtered_search', views.filtered_search, name='filtered_search'),
+
     # each page/view must be here
     # when you acess them its /new_search
 ]
