@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from datetime import date
 from . import api_mining
+from . import MLengine
 
 
 # here goes the logic, url functions pointing to html
@@ -14,11 +15,14 @@ def about(request):
     return render(request, 'about.html')
     # additional page, might delete
 
+def similarity_search(request):
+    # calls engine
+    pass
+
 def new_search(request):
     search = request.POST.get('search')
     # prints on the terminal running the site
     print(search)
-
     things_for_frontend = {
         'search': search,
     }
@@ -44,7 +48,6 @@ def filtered_search(request):
     url = api_mining.get_url(query)
     list_for_frontend = api_mining.url_to_ls(url)
 
-
     # need to send a dict, cant be list
     things_for_pandas = {
         'rank_by': rank_by,
@@ -55,7 +58,4 @@ def filtered_search(request):
         'list' : list_for_frontend
     }
     print(things_for_pandas)
-
-
-
     return render(request, 'filtered_search.html', things_for_pandas)
