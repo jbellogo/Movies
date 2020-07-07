@@ -4,10 +4,12 @@ import json
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+# best kept private
+from .keys import api_key
+
 
 # What will be used to calculate similarity scores
 FEATURES = ["title", "overview"]
-api_key = "api_key=d2ba87d601823962c8cc04aa877278a1"
 discover_api = "https://api.themoviedb.org/3/discover/movie?"
 
 

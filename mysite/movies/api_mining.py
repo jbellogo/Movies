@@ -1,11 +1,10 @@
+from .keys import api_key
 import requests
 import json
 import datetime
 import pandas as pd
 
-
 # API SET UP
-api_key = "api_key=d2ba87d601823962c8cc04aa877278a1"
 discover_api = "https://api.themoviedb.org/3/discover/movie?"
 
 
