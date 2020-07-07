@@ -11,22 +11,27 @@ def home(request):
     return render(request, "home.html")
     # points to html base
 
+
 def about(request):
     return render(request, 'about.html')
     # additional page, might delete
+
 
 def similarity_search(request):
     # calls engine
     pass
 
+
 def new_search(request):
-    search = request.POST.get('search')
+    search = request.POST.get('similarity_search')
     # prints on the terminal running the site
-    print(search)
+    # print(search)
+
     things_for_frontend = {
         'search': search,
     }
-    return render(request, 'new_search.html', things_for_frontend)
+    return render(request, 'filtered_search.html', things_for_frontend)
+
 
 def filtered_search(request):
     rank_by = request.POST.get('rank_by')
@@ -50,12 +55,13 @@ def filtered_search(request):
 
     # need to send a dict, cant be list
     things_for_pandas = {
+        'query': query,
         'rank_by': rank_by,
-        'genre' : genre,
-        'year' : year,
-        'month' : month,
-        'day' : day,
-        'list' : list_for_frontend
+        'genre': genre,
+        'year': year,
+        'month': month,
+        'day': day,
+        'list': list_for_frontend
     }
     print(things_for_pandas)
     return render(request, 'filtered_search.html', things_for_pandas)
