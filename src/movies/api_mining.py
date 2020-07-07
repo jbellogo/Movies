@@ -3,6 +3,7 @@ import requests
 import json
 import datetime
 import pandas as pd
+from . import models
 
 # API SET UP
 discover_api = "https://api.themoviedb.org/3/discover/movie?"
@@ -96,6 +97,7 @@ def url_to_ls(url):
     '''
     sends the reqeusts, processes the JSON with pandas and
     makes a list of movies (each as a dictionary with info keys)
+    Easy to turn into model!
     '''
     r = requests.get(url)
     if r.status_code != 200:  # API specific, see documentation
@@ -114,7 +116,6 @@ def url_to_ls(url):
              RATE_BY, "vote_count", "poster_path", "vote_average"]]
 
     lst = []
-
     for row in df.iterrows():
         dic = {
             "id": str(row[0]),
@@ -128,5 +129,31 @@ def url_to_ls(url):
             "vote_average": row[1]["vote_average"]
         }
         lst.append(dic)
-
     return lst
+
+####### for REST API ####
+
+
+def ls_to_model_ls(ls_dic):
+    '''
+    Creates models
+    Requires a list of dictonaries
+    or should we do it directly in url_to_ls()?
+    No, this way can use for api and rendering
+    '''
+    ls_dic = ls_dic[:10]
+    for movie in ls_dic:
+        # initializes models
+        models.Movies(
+            id=movie['id'],
+            title=movie['title'],
+            genres=movie['genres'],
+            release_date=movie['release_date'],
+            overview=movie['overview'],
+            popularity=movie['popularity'],
+            vote_count=movie['vote_count'],
+            poster_path=movie['poster_path'],
+            vote_average=movie['vote_average']
+        ).save()
+
+# also need a function to delete them!!

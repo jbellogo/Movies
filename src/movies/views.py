@@ -48,10 +48,16 @@ def filtered_search(request):
         rank_by = date.today().year
 
     # how to deal with default hmmm
-
     query = api_mining.get_query(rate_by=rank_by, genre=genre, year=year)
     url = api_mining.get_url(query)
     list_for_frontend = api_mining.url_to_ls(url)
+
+    # 3333
+    # 3333
+    # side effect?
+    api_mining.ls_to_model_ls(list_for_frontend)
+    # 3333
+    # 3333
 
     # need to send a dict, cant be list
     things_for_pandas = {
