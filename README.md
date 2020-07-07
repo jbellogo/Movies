@@ -13,3 +13,7 @@
 <p align="center">
   <img src="assets/results.png" width="350" title="Stuffs">
 </p>
+<h3>models in admin site </h3>
+<p align="center">
+  <img src="assets/admin1.png" width="350" title="Stuffs">
+</p>
